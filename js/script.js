@@ -111,17 +111,12 @@ const podcastBtns = Array.from(document.querySelectorAll('.podcast__item'));
 podcastBtns.forEach((podcastBtn) => {
 
   podcastBtn.addEventListener('click', () => {
-    podcastBtns.forEach((podcastBtn) => {
-      podcastBtn.querySelector('.podcast__pause-svg').classList.add('visually-hidden');
-      podcastBtn.querySelector('.podcast__play-svg').classList.remove('visually-hidden');
-    })
-
-    if (podcastBtn.querySelector('.podcast__play-svg').classList.contains('visually-hidden')) {
-      podcastBtn.querySelector('.podcast__play-svg').classList.remove('visually-hidden');
-      podcastBtn.querySelector('.podcast__pause-svg').classList.add('visually-hidden');
-    } else {
-      podcastBtn.querySelector('.podcast__play-svg').classList.add('visually-hidden');
+    if (podcastBtn.querySelector('.podcast__pause-svg').classList.contains('visually-hidden')) {
       podcastBtn.querySelector('.podcast__pause-svg').classList.remove('visually-hidden');
+      podcastBtn.querySelector('.podcast__play-svg').classList.add('visually-hidden');
+    } else {
+      podcastBtn.querySelector('.podcast__pause-svg').classList.add('visually-hidden');
+      podcastBtn.querySelector('.podcast__play-svg').classList.remove('visually-hidden');
     }
   })
   // - ! не работает на телефоне !
