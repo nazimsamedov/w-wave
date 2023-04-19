@@ -50,23 +50,21 @@ searchForm.addEventListener('focusout', () => {
 const onAirBtns = Array.from(document.querySelectorAll('.header__on-air-btn'));
 
 onAirBtns.forEach((onAirBtn) => {
-  const onAirPlay = onAirBtn.querySelector('.header__on-air-play');
-  const onAirPause = onAirBtn.querySelector('.header__on-air-pause');
+  onAirBtn.addEventListener('click', (e) => {
+    e.preventDefault();
 
-  onAirBtn.addEventListener('click', function () {
-    if (onAirPlay.style.display != 'none') {
-      onAirPlay.style.display = 'none';
-      onAirPause.style.display = 'initial';
+    if (onAirBtn.querySelector('.header__on-air-pause').classList.contains('visually-hidden')) {
+      onAirBtn.querySelector('.header__on-air-pause').classList.remove('visually-hidden');
+      onAirBtn.querySelector('.header__on-air-play').classList.add('visually-hidden');
     } else {
-      onAirPlay.style.display = 'initial';
-      onAirPause.style.display = 'none';
+      onAirBtn.querySelector('.header__on-air-pause').classList.add('visually-hidden');
+      onAirBtn.querySelector('.header__on-air-play').classList.remove('visually-hidden');
     }
   })
-  onAirBtn.addEventListener('focusout', function () {
-    if (onAirPlay.style.display = 'none') {
-      onAirPlay.style.display = 'initial';
-      onAirPause.style.display = 'none';
-    }
+  // - ! не работает на телефоне !
+  onAirBtn.addEventListener('focusout', () => {
+    onAirBtn.querySelector('.header__on-air-pause').classList.add('visually-hidden');
+    onAirBtn.querySelector('.header__on-air-play').classList.remove('visually-hidden');
   })
 });
 
@@ -107,27 +105,29 @@ modalLogin.addEventListener('click', (e) => {
 
 
 // --- podcast
-// podkast-play-pause
+// podcast-play-pause
 const podcastBtns = Array.from(document.querySelectorAll('.podcast__item'));
 
 podcastBtns.forEach((podcastBtn) => {
-  const podcastPlay = podcastBtn.querySelector('.podcast__play-svg');
-  const podcastPause = podcastBtn.querySelector('.podcast__pause-svg');
 
   podcastBtn.addEventListener('click', () => {
-    if (podcastPlay.style.display != 'none') {
-      podcastPlay.style.display = 'none';
-      podcastPause.style.display = 'initial';
+    podcastBtns.forEach((podcastBtn) => {
+      podcastBtn.querySelector('.podcast__pause-svg').classList.add('visually-hidden');
+      podcastBtn.querySelector('.podcast__play-svg').classList.remove('visually-hidden');
+    })
+
+    if (podcastBtn.querySelector('.podcast__play-svg').classList.contains('visually-hidden')) {
+      podcastBtn.querySelector('.podcast__play-svg').classList.remove('visually-hidden');
+      podcastBtn.querySelector('.podcast__pause-svg').classList.add('visually-hidden');
     } else {
-      podcastPlay.style.display = 'initial';
-      podcastPause.style.display = 'none';
+      podcastBtn.querySelector('.podcast__play-svg').classList.add('visually-hidden');
+      podcastBtn.querySelector('.podcast__pause-svg').classList.remove('visually-hidden');
     }
   })
+  // - ! не работает на телефоне !
   podcastBtn.addEventListener('focusout', () => {
-    if (podcastPlay.style.display = 'none') {
-      podcastPlay.style.display = 'initial';
-      podcastPause.style.display = 'none';
-    }
+    podcastBtn.querySelector('.podcast__pause-svg').classList.add('visually-hidden');
+    podcastBtn.querySelector('.podcast__play-svg').classList.remove('visually-hidden');
   })
 });
 
@@ -202,7 +202,7 @@ const swiper = new Swiper('.about__swiper-container', {
 
   breakpoints: {
     290: {
-      slidesPerView: 2,
+      slidesPerView: 2.33,
       spaceBetween: 20,
     },
 

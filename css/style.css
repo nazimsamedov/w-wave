@@ -390,11 +390,12 @@ body {
   padding: 4px 9px;
   width: 175px;
   height: 40px;
-  border-left: 1px solid #E6E8EC;
-  border-right: 1px solid #E6E8EC;
+  border-left: 1px solid var(--biege-color);
+  border-right: 1px solid var(--biege-color);
   font-weight: 400;
   font-size: 16px;
   line-height: 16px;
+  color: var(--dark-color);
 }
 
 .header__on-air-btn:focus {
@@ -407,7 +408,7 @@ body {
   width: 24px;
   height: 24px;
   fill: var(--grey-color);
-  transition: all .3s ease;
+  transition: fill .3s ease;
 }
 
 .header__on-air-btn:focus .header__on-air-play {
@@ -423,16 +424,17 @@ body {
 }
 
 .header__on-air-pause {
-  display: none;
-}
-
-.header__on-air-pause {
   align-self: center;
   margin-right: 8px;
   width: 24px;
   height: 24px;
   fill: var(--grey-color);
-  transition: all .3s ease;
+  transition: fill .3s ease;
+}
+
+
+.header__on-air-btn--active .header__on-air-pause {
+  display: initial;
 }
 
 .header__on-air-btn:focus .header__on-air-pause {
@@ -562,6 +564,10 @@ body {
   color: var(--blue-color);
 }
 
+.modal__subtitle span a:focus {
+  outline: none;
+}
+
 .modal__input {
   width: 65%;
   margin-bottom: var(--gap);
@@ -573,6 +579,10 @@ body {
   background: var(--dark-color);
   border: 1px solid var(--white-color);
   border-radius: 40px;
+}
+
+.modal__input:focus {
+  outline: none;
 }
 
 .modal__btn {
@@ -798,16 +808,12 @@ body {
 .podcast__play-svg,
 .podcast__pause-svg {
   stroke: var(--grey-color);
-  transition: all .3s ease;
+  transition: fill .3s ease, stroke .3s ease;
 }
 
 .podcast__play-svg path,
 .podcast__pause-svg rect {
   fill: var(--grey-color);
-}
-
-.podcast__pause-svg {
-  display: none;
 }
 
 .podcast__play-btn::before {

@@ -887,7 +887,7 @@
   .header__topic-nav {
     position: absolute;
     left: 0;
-    top: calc(40vh - 50px);
+    top: calc(40vh - 60px);
     width: 100vw;
     height: 60vh;
     z-index: 100;
@@ -1462,7 +1462,7 @@
 
   .playlist__item-link svg {
     left: 50%;
-    top: 50%;
+    top: 55%;
   }
 
   .playlist__item:not(:nth-last-child(-n+2)) {
@@ -1573,9 +1573,9 @@
     padding-left: 12%;
   }
 
-  .about__swiper-slide {
-    width: 113px;
-  }
+  /* .about__swiper-slide {
+    width: 113px !important;
+  } */
 
   .about__slide-pic {
     height: auto;
@@ -1646,7 +1646,7 @@
 
   .footer__nav-list {
     max-width: 300px;
-    max-height: 200px;
+    max-height: 165px;
     margin: 0 auto;
   }
 
